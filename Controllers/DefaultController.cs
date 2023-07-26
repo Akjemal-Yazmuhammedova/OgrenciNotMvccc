@@ -14,7 +14,7 @@ namespace OgrenciNotMvccc.Controllers
     {
         DbMvcOkulEntitiesNew db = new DbMvcOkulEntitiesNew();
         // GET: Default
-        public ActionResult Index()
+        public ActionResult Index()// Burası Ana Sayfa Nuuul Geliyor Şu An!!! İlerleyen zamanda LINQ Eklenecek!!!!!
         {
             return View();
         }
