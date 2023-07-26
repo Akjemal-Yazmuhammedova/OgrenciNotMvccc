@@ -23,6 +23,7 @@ namespace OgrenciNotMvccc.Models.DatabaseClasses
         public Nullable<int> PROJE { get; set; }
         public Nullable<decimal> ORTALAMA { get; set; }
         public Nullable<bool> DURUM { get; set; }
+        public Nullable<bool> Aktifmi { get; set; }
     
         public virtual TBLDERSLER TBLDERSLER { get; set; }
         public virtual TBLOGRENCILER TBLOGRENCILER { get; set; }

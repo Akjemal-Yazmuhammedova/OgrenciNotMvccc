@@ -26,6 +26,7 @@ namespace OgrenciNotMvccc.Models.DatabaseClasses
         public string OGRFOTOGRAF { get; set; }
         public string OGRCINSIYETI { get; set; }
         public string OGRKULUP { get; set; }
+        public Nullable<bool> Aktifmi { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TBLNOTLAR> TBLNOTLAR { get; set; }

@@ -5,22 +5,13 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="DbMvcOkulModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <EntityType Name="TBLDERSLER">
           <Key>
             <PropertyRef Name="DERSİD" />
           </Key>
           <Property Name="DERSİD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DERSAD" Type="varchar" MaxLength="30" />
+          <Property Name="Aktifmi" Type="bit" />
         </EntityType>
         <EntityType Name="TBLKULUPLER">
           <Key>
@@ -29,6 +20,7 @@
           <Property Name="KULUPID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="KULUPAD" Type="varchar" MaxLength="30" />
           <Property Name="KULUPKONTENJAN" Type="smallint" />
+          <Property Name="Aktifmi" Type="bit" />
         </EntityType>
         <EntityType Name="TBLNOTLAR">
           <Key>
@@ -43,6 +35,7 @@
           <Property Name="PROJE" Type="int" />
           <Property Name="ORTALAMA" Type="decimal" Precision="18" Scale="0" />
           <Property Name="DURUM" Type="bit" />
+          <Property Name="Aktifmi" Type="bit" />
         </EntityType>
         <EntityType Name="TBLOGRENCILER">
           <Key>
@@ -54,6 +47,7 @@
           <Property Name="OGRFOTOGRAF" Type="varchar(max)" />
           <Property Name="OGRCINSIYETI" Type="varchar" MaxLength="10" />
           <Property Name="OGRKULUP" Type="nchar" MaxLength="10" />
+          <Property Name="Aktifmi" Type="bit" />
         </EntityType>
         <Association Name="FK_TBLNOTLAR_TBLDERSLER">
           <End Role="TBLDERSLER" Type="Self.TBLDERSLER" Multiplicity="0..1" />
@@ -80,7 +74,6 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="DbMvcOkulModelStoreContainer">
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBLDERSLER" EntityType="Self.TBLDERSLER" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBLKULUPLER" EntityType="Self.TBLKULUPLER" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBLNOTLAR" EntityType="Self.TBLNOTLAR" Schema="dbo" store:Type="Tables" />
@@ -99,22 +92,13 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DbMvcOkulModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
         <EntityType Name="TBLDERSLER">
           <Key>
             <PropertyRef Name="DERSİD" />
           </Key>
           <Property Name="DERSİD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DERSAD" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Aktifmi" Type="Boolean" />
           <NavigationProperty Name="TBLNOTLAR" Relationship="Self.FK_TBLNOTLAR_TBLDERSLER" FromRole="TBLDERSLER" ToRole="TBLNOTLAR" />
         </EntityType>
         <EntityType Name="TBLKULUPLER">
@@ -124,6 +108,7 @@
           <Property Name="KULUPID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="KULUPAD" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="KULUPKONTENJAN" Type="Int16" />
+          <Property Name="Aktifmi" Type="Boolean" />
         </EntityType>
         <EntityType Name="TBLNOTLAR">
           <Key>
@@ -138,6 +123,7 @@
           <Property Name="PROJE" Type="Int32" />
           <Property Name="ORTALAMA" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="DURUM" Type="Boolean" />
+          <Property Name="Aktifmi" Type="Boolean" />
           <NavigationProperty Name="TBLDERSLER" Relationship="Self.FK_TBLNOTLAR_TBLDERSLER" FromRole="TBLNOTLAR" ToRole="TBLDERSLER" />
           <NavigationProperty Name="TBLOGRENCILER" Relationship="Self.FK_TBLNOTLAR_TBLOGRENCILER" FromRole="TBLNOTLAR" ToRole="TBLOGRENCILER" />
         </EntityType>
@@ -151,6 +137,7 @@
           <Property Name="OGRFOTOGRAF" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="OGRCINSIYETI" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="OGRKULUP" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Aktifmi" Type="Boolean" />
           <NavigationProperty Name="TBLNOTLAR" Relationship="Self.FK_TBLNOTLAR_TBLOGRENCILER" FromRole="TBLOGRENCILER" ToRole="TBLNOTLAR" />
         </EntityType>
         <Association Name="FK_TBLNOTLAR_TBLDERSLER">
@@ -177,8 +164,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DbMvcOkulEntities2" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+        <EntityContainer Name="DbMvcOkulEntitiesNew" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="TBLDERSLER" EntityType="Self.TBLDERSLER" />
           <EntitySet Name="TBLKULUPLER" EntityType="Self.TBLKULUPLER" />
           <EntitySet Name="TBLNOTLAR" EntityType="Self.TBLNOTLAR" />
@@ -197,23 +183,13 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DbMvcOkulModelStoreContainer" CdmEntityContainer="DbMvcOkulEntities2">
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="DbMvcOkulModel.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+        <EntityContainerMapping StorageEntityContainer="DbMvcOkulModelStoreContainer" CdmEntityContainer="DbMvcOkulEntitiesNew">
           <EntitySetMapping Name="TBLDERSLER">
             <EntityTypeMapping TypeName="DbMvcOkulModel.TBLDERSLER">
               <MappingFragment StoreEntitySet="TBLDERSLER">
                 <ScalarProperty Name="DERSİD" ColumnName="DERSİD" />
                 <ScalarProperty Name="DERSAD" ColumnName="DERSAD" />
+                <ScalarProperty Name="Aktifmi" ColumnName="Aktifmi" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -223,6 +199,7 @@
                 <ScalarProperty Name="KULUPID" ColumnName="KULUPID" />
                 <ScalarProperty Name="KULUPAD" ColumnName="KULUPAD" />
                 <ScalarProperty Name="KULUPKONTENJAN" ColumnName="KULUPKONTENJAN" />
+                <ScalarProperty Name="Aktifmi" ColumnName="Aktifmi" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -238,6 +215,7 @@
                 <ScalarProperty Name="PROJE" ColumnName="PROJE" />
                 <ScalarProperty Name="ORTALAMA" ColumnName="ORTALAMA" />
                 <ScalarProperty Name="DURUM" ColumnName="DURUM" />
+                <ScalarProperty Name="Aktifmi" ColumnName="Aktifmi" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -250,6 +228,7 @@
                 <ScalarProperty Name="OGRFOTOGRAF" ColumnName="OGRFOTOGRAF" />
                 <ScalarProperty Name="OGRCINSIYETI" ColumnName="OGRCINSIYETI" />
                 <ScalarProperty Name="OGRKULUP" ColumnName="OGRKULUP" />
+                <ScalarProperty Name="Aktifmi" ColumnName="Aktifmi" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

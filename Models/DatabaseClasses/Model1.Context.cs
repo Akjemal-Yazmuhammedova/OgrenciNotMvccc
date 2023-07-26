@@ -13,10 +13,10 @@ namespace OgrenciNotMvccc.Models.DatabaseClasses
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DbMvcOkulEntities2 : DbContext
+    public partial class DbMvcOkulEntitiesNew : DbContext
     {
-        public DbMvcOkulEntities2()
-            : base("name=DbMvcOkulEntities2")
+        public DbMvcOkulEntitiesNew()
+            : base("name=DbMvcOkulEntitiesNew")
         {
         }
     
@@ -25,7 +25,6 @@ namespace OgrenciNotMvccc.Models.DatabaseClasses
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TBLDERSLER> TBLDERSLER { get; set; }
         public virtual DbSet<TBLKULUPLER> TBLKULUPLER { get; set; }
         public virtual DbSet<TBLNOTLAR> TBLNOTLAR { get; set; }
