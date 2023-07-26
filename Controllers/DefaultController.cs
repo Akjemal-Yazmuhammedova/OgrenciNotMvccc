@@ -69,6 +69,7 @@ namespace OgrenciNotMvccc.Controllers
             return RedirectToAction("Index");
         }
 
+
         // Kayıtlı Olan Öğrencileri Siler!!!
         public ActionResult SilOgrenci(int Id)
         {
