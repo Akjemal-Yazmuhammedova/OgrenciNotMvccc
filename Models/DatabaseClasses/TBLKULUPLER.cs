@@ -17,5 +17,6 @@ namespace OgrenciNotMvccc.Models.DatabaseClasses
         public int KULUPID { get; set; }
         public string KULUPAD { get; set; }
         public Nullable<short> KULUPKONTENJAN { get; set; }
+        public Nullable<bool> Aktifmi { get; set; }
     }
 }

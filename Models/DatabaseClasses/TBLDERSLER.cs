@@ -22,9 +22,9 @@ namespace OgrenciNotMvccc.Models.DatabaseClasses
     
         public int DERSİD { get; set; }
         public string DERSAD { get; set; }
+        public Nullable<bool> Aktifmi { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TBLNOTLAR> TBLNOTLAR { get; set; }
-      
     }
 }

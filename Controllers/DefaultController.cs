@@ -12,7 +12,7 @@ namespace OgrenciNotMvccc.Controllers
 {
     public class DefaultController : Controller
     {
-        DbMvcOkulEntities2 db = new DbMvcOkulEntities2();
+        DbMvcOkulEntitiesNew db = new DbMvcOkulEntitiesNew();
         // GET: Default
         public ActionResult Index()
         {
@@ -22,31 +22,31 @@ namespace OgrenciNotMvccc.Controllers
         // Ögrencilerin Bilgilerini Getir
         public ActionResult OgrenciListesi()
         {
-            var gerStudents = db.TBLOGRENCILER.ToList();// Ogrenci bilgisini listele
+            var gerStudents = db.TBLOGRENCILER.Where(s=>s.Aktifmi==true).ToList();// Ogrenci bilgisini listele
             return View(gerStudents);
         }
 
         // Derlers için
         public ActionResult TumDersler() // Tüm Dersleri Listeler
         {
-            var getLessons = db.TBLDERSLER.ToList();
+            var getLessons = db.TBLDERSLER.Where(akjemal => akjemal.Aktifmi == true).ToList();
             return View(getLessons);
         }
 
         // Kulüpler için
         public ActionResult Kulupler() //Kulüpleri listeler
         {
-            var getLessons = db.TBLKULUPLER.ToList();
+            var getLessons = db.TBLKULUPLER.Where(akjemal => akjemal.Aktifmi == true).ToList();
             return View(getLessons);
 
         }
         //Sınav Notları İçin
         public ActionResult Sınavlar() // Sınavlar listesi
         {
-            var getLessons = db.TBLNOTLAR.ToList();
-            var getDAta = db.TBLNOTLAR.Take(5).ToList(); // Bu Kod Sadece İlk 5 veriyi GEtirir
-            var getDAta2 = db.TBLNOTLAR.Take(5).OrderByDescending(k=>k.NOTID).ToList(); // Bu Kod Sadece Son 5 veriyi GEtirir
-            var getDAta3 = db.TBLNOTLAR.Skip(3).Take(5).OrderByDescending(k => k.NOTID).ToList(); // Bu ilk 3 veriyi atla sonra  Sadece Son 5 veriyi GEtirir
+            var getLessons = db.TBLNOTLAR.Where(g => g.Aktifmi == true).ToList();
+            var getDAta = db.TBLNOTLAR.Where(g => g.Aktifmi == true).Take(5).ToList(); // Bu Kod Sadece İlk 5 veriyi GEtirir
+            var getDAta2 = db.TBLNOTLAR.Where(g => g.Aktifmi == true).Take(5).OrderByDescending(k => k.NOTID).ToList(); // Bu Kod Sadece Son 5 veriyi GEtirir
+            var getDAta3 = db.TBLNOTLAR.Where(g => g.Aktifmi == true).OrderByDescending(k => k.NOTID).Skip(3).Take(5).ToList(); // Bu ilk 3 veriyi atla sonra  Sadece Son 5 veriyi GEtirir
 
             return View(getLessons);
         }
@@ -55,7 +55,7 @@ namespace OgrenciNotMvccc.Controllers
         public ActionResult Sil(int Id)
         {
             var Kulupler = db.TBLKULUPLER.Find(Id);
-            db.TBLKULUPLER.Remove(Kulupler);
+            Kulupler.Aktifmi = false;
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -63,17 +63,19 @@ namespace OgrenciNotMvccc.Controllers
         // Dersleri Siler 
         public ActionResult SilDersler(int Id)
         {
-            var Sınavlar = db.TBLDERSLER.Find(Id);
-            db.TBLDERSLER.Remove(Sınavlar);
+            var examps = db.TBLDERSLER.Find(Id);
+            examps.Aktifmi = false;
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
 
         // Kayıtlı Olan Öğrencileri Siler!!!
         public ActionResult SilOgrenci(int Id)
         {
             var OgrenciListesi = db.TBLOGRENCILER.Find(Id);
-            db.TBLOGRENCILER.Remove(OgrenciListesi);
+            OgrenciListesi.Aktifmi = false;
+            //  db.TBLOGRENCILER.Remove(OgrenciListesi);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -81,8 +83,8 @@ namespace OgrenciNotMvccc.Controllers
         // var Olan Notları Siler ID Ye Göre!!
         public ActionResult SilNotlar(int Id)
         {
-            var Notlar = db.TBLNOTLAR.Find(Id);
-            db.TBLNOTLAR.Remove(Notlar);
+            var notlar = db.TBLNOTLAR.Find(Id);
+            notlar.Aktifmi = false;
             db.SaveChanges();
             return RedirectToAction("Index");
         }
