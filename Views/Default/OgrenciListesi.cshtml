@@ -1,0 +1,68 @@
+﻿@model IEnumerable<OgrenciNotMvccc.Models.DatabaseClasses.TBLOGRENCILER>
+
+@{
+    ViewBag.Title = "OgrenciListesi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>OgrenciListesi</h2>
+
+
+<table class="table table-hover">
+    <tr>
+        <th>
+            öğrenci Adı
+        </th>
+        <th>
+            Öğrenci Soyadı
+        </th>
+        <th>
+            Öğrenci Fotografı
+        </th>
+        <th>
+            Öğrenci Cinsiyeti
+        </th>
+        <th>
+            Okul Grubu
+        </th>
+        <th>
+            Sil
+        </th>
+        <th>
+            Güncelle
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OGRAD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OGRSOYADI)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OGRFOTOGRAF)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OGRCINSIYETI)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OGRKULUP)
+            </td>
+            <td>
+                <a href="~/Default/SilOgrenci/@item.OGRID" class="btn btn-warning">sil</a>
+            </td>
+            <td>
+                <a href="#" class="btn btn-danger">Güncelle</a>
+            </td>
+            
+        </tr>
+    }
+
+</table>
+<br />
+<a href="#" class="btn btn-success">Yeni Kayıt Ekle</a>
+

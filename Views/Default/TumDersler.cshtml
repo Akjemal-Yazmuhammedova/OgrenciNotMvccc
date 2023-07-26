@@ -1,0 +1,50 @@
+﻿@model IEnumerable<OgrenciNotMvccc.Models.DatabaseClasses.TBLDERSLER>
+@{
+    ViewBag.Title = "TumDersler";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>TumDersler</h2>
+
+
+<table class="table">
+    <tr>
+
+        <th>
+            Ders Id
+        </th>
+        <th>
+            Ders Adları
+        </th>
+        <th>
+            Ders Sil
+        </th>
+        <th>
+            Ders Güncelle
+        </th>
+
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.DERSİD
+            </td>
+            <td>
+                @item.DERSAD
+            </td>
+
+
+            <td>
+                <a href="~/Default/SilDersler/@item.DERSİD" class="btn btn-warning">sil</a>
+            </td>
+            <td>
+                <a href="#" class="btn btn-danger">Güncelle</a>
+            </td>
+        </tr>
+    }
+
+</table>
+<a href="" class="btn btn-primary"> Yeni ders Girişi</a>

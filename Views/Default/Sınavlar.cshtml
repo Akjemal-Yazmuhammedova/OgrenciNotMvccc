@@ -1,0 +1,87 @@
+﻿@model IEnumerable<OgrenciNotMvccc.Models.DatabaseClasses.TBLNOTLAR>
+@{
+    ViewBag.Title = "Sınavlar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Sınavlar</h2>
+<table class="table">
+    <tr>
+        <th>
+            Not Id
+        </th>
+        <th>
+            Ders Id
+        </th>
+        <th>
+            Ogrenci Id
+        </th>
+        <th>
+            Sınav 1
+        </th>
+        <th>
+            Sınav 2
+        </th>
+        <th>
+            Sınav 3
+        </th>
+        <th>
+            Proje
+        </th>
+        <th>
+            Ortalama
+        </th>
+        <th>
+            Durum
+        </th>
+        <th>
+            Sil
+        </th>
+        <th>
+            Güncelle
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.NOTID
+            </td>
+            <td>
+                @item.DERSID
+            </td>
+            <td>
+                @item.OGRID
+            </td>
+            <td>
+                @item.SINAV1
+            </td>
+            <td>
+                @item.SINAV2
+            </td>
+            <td>
+                @item.SINAV3
+            </td>
+            <td>
+                @item.PROJE
+            </td>
+            <td>
+                @item.ORTALAMA
+            </td>
+            <td>
+                @item.DURUM
+            </td>
+
+            <td>
+                <a href="~/Default/SilNotlar/@item.DERSID" class="btn btn-warning">sil</a>
+            </td>
+            <td>
+                <a href="#" class="btn btn-danger">Güncelle</a>
+            </td>
+            
+        </tr>
+    }
+</table>
+<a href="" class="btn btn-primary"> Yeni Sınav Girişi</a>
+
+

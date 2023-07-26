@@ -1,0 +1,47 @@
+﻿@model IEnumerable<OgrenciNotMvccc.Models.DatabaseClasses.TBLKULUPLER>
+@{
+    ViewBag.Title = "Kulupler";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Kulupler</h2>
+<table class="table">
+    <tr>
+        <th>
+            Kulup Id
+        </th>
+        <th>
+            Kulup Ad
+        </th>
+        <th>
+            Kulup Kontenjan
+        </th>
+        <th>
+            Sil
+        </th>
+        <th>
+            Güncelle
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.KULUPID
+            </td>
+            <td>
+                @item.KULUPAD
+            </td>
+            <td>
+                @item.KULUPKONTENJAN
+            </td>
+            <td>
+                <a href="~/Default/Sil/@item.KULUPID" class="btn btn-warning">sil</a>
+            </td>
+            <td>
+                <a href="#" class="btn btn-danger">Güncelle</a>
+            </td>
+        </tr>
+    }
+</table>
+<a href="" class="btn btn-primary"> Yeni Kulup Girişi</a>
