@@ -1,0 +1,101 @@
+﻿@model OgrenciNotMvccc.Models.DatabaseClasses.TBLOGRENCILER
+@{
+    ViewBag.Title = "YeniOgrenci";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div>
+    <label>
+        Ogrenci Adı
+    </label>
+    <input type="text" class="form-control" name="OGRAD" />
+    <div style="margin-top:10px">
+
+    </div>
+</div>
+<div>
+    <label>
+        Ogrenci Soyadı
+    </label>
+    <input type="text" class="form-control" name="OGRSOYADI" />
+    <div style="margin-top:10px">
+
+    </div>
+</div>
+
+<div>
+    <label>
+        Ogrenci Fotograf
+    </label>
+    <input type="text" class="form-control" name="OGRFOTOGRAF" />
+    <div style="margin-top:10px">
+
+    </div>
+</div>
+
+<div>
+    <label>
+        Ogrenci Cınsıyeti
+    </label>
+    <input type="text" class="form-control" name="OGRCINSIYETI" />
+    <div style="margin-top:10px">
+
+    </div>
+</div>
+
+<div>
+    <label>
+        Ogrenci Kulup
+    </label>
+    <input type="text" class="form-control" name="OGRKULUP" />
+    <div style="margin-top:10px">
+        <label>
+            Şehir seçimi
+        </label>
+        @Html.DropDownList("Şehirler",
+    new[]
+    {
+        new SelectListItem() {Value="1", Text="Ankara"},
+             new   SelectListItem() {Value="2", Text="İstanbul"},
+                     new   SelectListItem() {Value="3", Text="İsparta"},
+                            new    SelectListItem() {Value="4", Text="Bursa"},
+    }, "Şehir Seçiniz.....", new { @class = "form-control" })
+    </div>
+</div>
+<div style="margin-top:10px">
+
+
+        <label>Film seçiniz</label>
+        <select>
+
+        <option value="0">Aksiyon</option>
+
+        <option value="1">Drama</option>
+
+        <option value="2">romantik</option>
+
+        <option value="3">Bilim Kurgu</option>
+
+        <option value="4">Animasyon</option>
+
+        </select>
+</div>
+<div style="scroll-margin-top:10px">
+    @*@using (Html.BeginForm("CategoryChosen", "Home", FormMethod.Get))
+    {
+
+
+            @Html.DropDownList("DersAd")
+    }*@
+
+
+
+    </div>
+
+<div style="margin-top:10px">
+    <button class="btn btn-info"> Ekle</button>
+</div>
+
+
+

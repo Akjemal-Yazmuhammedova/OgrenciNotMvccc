@@ -580,6 +580,10 @@
     <Content Include="Views\Default\TumDersler.cshtml" />
     <Content Include="Views\Default\Kulupler.cshtml" />
     <Content Include="Views\Default\Sınavlar.cshtml" />
+    <Content Include="Views\Default\YeniDers.cshtml" />
+    <Content Include="Views\Default\YeniOgrenci.cshtml" />
+    <Content Include="Views\Default\YeniKulüp.cshtml" />
+    <Content Include="Views\Default\YeniSınav.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

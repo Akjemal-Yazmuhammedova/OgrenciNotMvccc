@@ -1,0 +1,21 @@
+﻿@model OgrenciNotMvccc.Models.DatabaseClasses.TBLDERSLER
+@{
+    ViewBag.Title = "YeniDers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("YeniDers", "Default", FormMethod.Post))
+{
+    <div>
+        <label>
+            Dersin Adı
+        </label>
+        <input type="text" class="form-control" name="DERSAD" />
+        <div style="margin-top:10px">
+            <button class="btn btn-info">Ders Ekle</button>
+        </div>
+    </div>
+}
+
+

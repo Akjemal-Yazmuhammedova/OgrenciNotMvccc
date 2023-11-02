@@ -1,0 +1,65 @@
+﻿@model OgrenciNotMvccc.Models.DatabaseClasses.TBLNOTLAR
+@{
+    ViewBag.Title = "YeniSınav";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("YeniSınav", "Default", FormMethod.Post))
+{
+
+
+    <div>
+        <label>
+            Ders Id
+        </label>
+        <input type="text" class="form-control" name="" />
+        <div style="margin-top:10px">
+
+        </div>
+    </div>
+    <div>
+        <label>
+            Ogrenci Soyadı
+        </label>
+        <input type="text" class="form-control" name="OGRSOYADI" />
+        <div style="margin-top:10px">
+
+        </div>
+    </div>
+
+    <div>
+        <label>
+            Ogrenci Fotograf
+        </label>
+        <input type="text" class="form-control" name="OGRFOTOGRAF" />
+        <div style="margin-top:10px">
+
+        </div>
+    </div>
+
+    <div>
+        <label>
+            Ogrenci Cınsıyeti
+        </label>
+        <input type="text" class="form-control" name="OGRCINSIYETI" />
+        <div style="margin-top:10px">
+
+        </div>
+    </div>
+
+    <div>
+        <label>
+            Ogrenci Kulup
+        </label>
+        <input type="text" class="form-control" name="OGRKULUP" />
+        <div style="margin-top:10px">
+        </div>
+    </div>
+
+    <div style="margin-top:10px">
+        <button class="btn btn-info"> Ekle</button>
+    </div>
+}
+
+

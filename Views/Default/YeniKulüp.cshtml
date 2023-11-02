@@ -1,0 +1,36 @@
+﻿@model OgrenciNotMvccc.Models.DatabaseClasses.TBLKULUPLER
+@{
+    ViewBag.Title = "YeniKulüp";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("YeniKulüp", "Default", FormMethod.Post))
+{ 
+<div>
+    <label>
+        Kulup Ad
+    </label>
+    <input type="text" class="form-control" name="KULUPAD" />
+
+    <div style="margin-top:10px">
+
+    </div>
+</div>
+
+<div>
+    <label>
+        Kulup Kontenjan
+    </label>
+    <input type="text" class="form-control" name="KULUPKONTENJAN" />
+
+    <div style="margin-top:10px">
+
+    </div>
+</div>
+<div style="margin-top:10px">
+    <button class="btn btn-info"> Ekle</button>
+</div>
+}
+
+
+

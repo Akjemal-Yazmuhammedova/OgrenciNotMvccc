@@ -22,7 +22,7 @@ namespace OgrenciNotMvccc.Controllers
         // Ögrencilerin Bilgilerini Getir
         public ActionResult OgrenciListesi()
         {
-            var gerStudents = db.TBLOGRENCILER.Where(s=>s.Aktifmi==true).ToList();// Ogrenci bilgisini listele
+            var gerStudents = db.TBLOGRENCILER.Where(s => s.Aktifmi == true).ToList();// Ogrenci bilgisini listele
             return View(gerStudents);
         }
 
@@ -89,13 +89,81 @@ namespace OgrenciNotMvccc.Controllers
             return RedirectToAction("Index");
         }
         //Ekle Kısmı
-        //public ActionResult Ekle(int Id)
-        //{
-        //    var Kulupler = db.TBLKULUPLER.Add(Id);
-        //    db.TBLKULUPLER.Remove(Kulupler);
-        //    db.SaveChanges();
-        //    return RedirectToAction("Index");
-        //}
+        [HttpGet]
+        public ActionResult YeniDers()
+        {
+            return View();
+        }
 
+        [HttpPost]
+        public ActionResult YeniDers(TBLDERSLER p)
+        {
+            p.Aktifmi = true;
+            db.TBLDERSLER.Add(p);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        //Ogrenci Ekleme
+        [HttpGet]
+        public ActionResult YeniOgrenci()// Ekleme Kısmında 2 Tane ActionResult Açılmalı bunun 1. Bu şekilde Boş gelmeli GET Kısmı
+        {
+            public ActionResult SelectCategory()
+            {
+
+                List<SelectListItem> items = new List<SelectListItem>();
+
+                items.Add(new SelectListItem { Text = "Matematik", Value = "0" });
+
+                items.Add(new SelectListItem { Text = "Fen Bilgisi", Value = "1" });
+
+                items.Add(new SelectListItem { Text = "Atatürk İnkilap", Value = "2"});
+
+                items.Add(new SelectListItem { Text = "Coğafya", Value = "3" });
+
+                ViewBag.DersAd = items;
+
+                return View();
+
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult YeniOgrenci(TBLOGRENCILER o)// 2. Kısımı ise POST Yani verini eklendigi yer Burada işlem Yapılmalı! hata YeniOgrencinin 2 gezek eklenmesimi
+        {
+            o.Aktifmi = true;
+            db.TBLOGRENCILER.Add(o);
+            db.SaveChanges();
+            return RedirectToAction("OgrenciListesi", "Default");
+        }
+
+        //Kulup ekleme
+
+        [HttpGet]
+        public ActionResult YeniKulüp()
+        {
+            return View();
+        }
+        [HttpPost]  
+        public ActionResult YeniKulüp (TBLKULUPLER ku)
+        {
+            ku.Aktifmi = true;
+            db.TBLKULUPLER.Add(ku);
+            db.SaveChanges();   
+            return RedirectToAction("Kulupler","Default");   
+        }
+        [HttpGet]
+        public ActionResult YeniSınav() 
+        { 
+            return View();
+        }
+        [HttpPost]
+        public ActionResult YeniSınav(TBLNOTLAR S) 
+        { 
+            S.Aktifmi = true;   
+            db.TBLNOTLAR.Add(S);
+            db.SaveChanges();
+            return RedirectToAction("Sınavlar", "Default");
+        }
     }
 }
